@@ -2,7 +2,7 @@
 
 ## Background:
 
-An interview questions that tripped me up a lot of bit, and because of that I'm going to complete.
+An interview questions that tripped me up a lot of bit, and because of that I'm going to complete it.
 
 ## The Problem:
 
