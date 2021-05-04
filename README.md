@@ -45,7 +45,7 @@ grid = [
   [8, 1, 9, 3, 2, 4, 7, 6, 5]
 ]
 ```
-The output should be: `soduku(grid) = false;`
+The output should be: `sudoku(grid) = false;`
 
 The output should be false: each of the nine 3x3 sub-grids should contain all
 of the digits from 1 to 9.
