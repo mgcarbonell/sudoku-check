@@ -107,10 +107,15 @@ function sudoku(grid) {
       if (!map["box"][boxId]) {
         map["box"][boxId] = [];
         map["box"][boxId].push(square)
-      } else if (!store["box"][boxId].includes(map["box"]))
+      } else if (!map["box"][boxId].includes(square)) {
+        map["box"][boxId].push(square)
+      } else if (map["box"][boxId] && map["box"][boxId].includes(square)) {
+        return false;
+      }
     }
   }
   console.log(map)
+  return true
 }
 
 // the duplicate checker that Michael used
@@ -121,21 +126,9 @@ function sudoku(grid) {
 // console.log(duplicate([1, 2, 3, 4, 5]))
 // console.log(duplicate([1, 1, 2, 3, 4]))
 
-const grid = [
-  [1, 3, 2, 5, 4, 6, 9, 8, 7],
-  [4, 6, 5, 8, 7, 9, 3, 2, 1],
-  [7, 9, 8, 2, 1, 3, 6, 5, 4],
-  [9, 2, 1, 4, 3, 5, 8, 7, 6],
-  [3, 5, 4, 7, 6, 8, 2, 1, 9],
-  [6, 8, 7, 1, 9, 2, 5, 4, 3],
-  [5, 7, 6, 9, 8, 1, 4, 3, 2],
-  [2, 4, 3, 6, 5, 7, 1, 9, 8],
-  [8, 1, 9, 3, 2, 4, 7, 6, 5]
-]
-
 // const grid = [
-//   [1, 3, 2, 5, 4, 6, 9, 2, 7],
-//   [4, 6, 5, 8, 7, 9, 3, 8, 1],
+//   [1, 3, 2, 5, 4, 6, 9, 8, 7],
+//   [4, 6, 5, 8, 7, 9, 3, 2, 1],
 //   [7, 9, 8, 2, 1, 3, 6, 5, 4],
 //   [9, 2, 1, 4, 3, 5, 8, 7, 6],
 //   [3, 5, 4, 7, 6, 8, 2, 1, 9],
@@ -144,5 +137,17 @@ const grid = [
 //   [2, 4, 3, 6, 5, 7, 1, 9, 8],
 //   [8, 1, 9, 3, 2, 4, 7, 6, 5]
 // ]
+
+const grid = [
+  [1, 3, 2, 5, 4, 6, 9, 2, 7],
+  [4, 6, 5, 8, 7, 9, 3, 8, 1],
+  [7, 9, 8, 2, 1, 3, 6, 5, 4],
+  [9, 2, 1, 4, 3, 5, 8, 7, 6],
+  [3, 5, 4, 7, 6, 8, 2, 1, 9],
+  [6, 8, 7, 1, 9, 2, 5, 4, 3],
+  [5, 7, 6, 9, 8, 1, 4, 3, 2],
+  [2, 4, 3, 6, 5, 7, 1, 9, 8],
+  [8, 1, 9, 3, 2, 4, 7, 6, 5]
+]
 
 console.log(sudoku(grid))
