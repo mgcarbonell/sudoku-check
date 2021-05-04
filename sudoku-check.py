@@ -48,3 +48,5 @@
 # 2. Loop through each function and check if it is valid
 # 3. Return true if all functions pass.
 ################################################################################
+
+def sudoku(grid):

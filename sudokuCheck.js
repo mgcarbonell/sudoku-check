@@ -57,7 +57,5 @@ Summary:
 // we can also do it like the checkerboard problem where you have to try to
 // recreate a checkerboard: let i = 0; i < 9; i++ then j = 0; j < 9; j++...
 function sudoku(grid) {
-  let collapsed = [[], [], []]
-
 
 }

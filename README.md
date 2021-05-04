@@ -8,7 +8,7 @@ An interview questions that tripped me up a lot of bit, and because of that I'm 
 
 Sudoku is a number placement puzzle. The objective is to fill a 9x9 grid with
 digits so that each column, each row, and each of the nine 3x3 sub-grids that
-compose the grid contains all of the digits from 1 to 9.
+compose the grid contains all of the digits from 1 to 9 (with no duplicates).
 
 This algorithm should check if the given grid of numbers represents a correct
 solution to Sudoku.
