@@ -66,13 +66,18 @@ function sudoku(grid) {
 
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
-      const square = grid[i][j] // our current "square"/"box"/"position"
+      // our current "square"/"box"/"position"
+      const square = grid[i][j]
+
       // we'll take care of our rows first. use i for horizontal
-      if (!map["rows"][i]) { // does map contain a key for the row?
-        map["rows"][i] = []; // unique values go here
-        map["rows"][i].push(square); // push unique values
-      } else if (!map["rows"][i].includes(square)) { // does it have our 
-        // current square ? No ? Push into our map.
+      if (!map["rows"][i]) {
+        // does map contain a key for the row?
+        // unique values go here
+        map["rows"][i] = [];
+        // push unique values
+        map["rows"][i].push(square);
+      } else if (!map["rows"][i].includes(square)) {
+        // does it have our current square ? No ? Push into our map.
         map["rows"][i].push(square);
       } else if (map["rows"][i] && map["rows"][i].includes(square)) {
         // is our current square in the map.rows? Yes? Invalid sudoku!
@@ -81,13 +86,28 @@ function sudoku(grid) {
       // now let's do it again but for columns! use j for vertical
       if (!map["cols"][j]) {
         map["cols"][j] = [];
-        map["cols"][j].push(square)
-      } else if (!map["cols"][j].includes(square)) { // does not include square
-        map["cols"][j].push(square) // push our current square into the map
+        map["cols"][j].push(square);
+      } else if (!map["cols"][j].includes(square)) {
+        // does not include square? push our current square into the map
+        map["cols"][j].push(square);
       } else if (map["cols"][j] && map["cols"][j].includes(square)) {
         // is our current square in map.cols? Yes? Invalid suduoku!
         return false;
       }
+
+      // a sudoku board contains 9 sub-grids or "boxes" 
+      //                                    1-1, 1-2, 1-3
+      //                                    2-1, 2-2, 2-3
+      //                                    3-1, 3-2, 3-3
+      const boxRowId = Math.ceil((i + 1) / 3);
+      const boxColId = Math.ceil((j + 1) / 3);
+      const boxId = `${boxRowId}-${boxColId}`;
+
+      // repeat the above logic, but this time for our "boxes"
+      if (!map["box"][boxId]) {
+        map["box"][boxId] = [];
+        map["box"][boxId].push(square)
+      } else if (!store["box"][boxId].includes(map["box"]))
     }
   }
   console.log(map)

@@ -52,7 +52,7 @@ of the digits from 1 to 9.
 
 ### Summary:
 
-1. Create 3 different functions to check if it is valid sudoku (row/col/3x3)
+1. Create a function or 3 different functions to check if it is valid sudoku (row/col/3x3)
 2. Loop through each function and check if it is valid
 3. Return true if all functions pass.
 
