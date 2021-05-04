@@ -49,4 +49,22 @@
 # 3. Return true if all functions pass.
 ################################################################################
 
+# A general approach is to check each row, then the columns, then the 3x3.
+# I really liked the helper function idea that was presented to me during
+# the interview.
+
 def sudoku(grid):
+    # check the row
+    for row in range(len(grid)):
+        if ValidRow(grid, row) == False:
+            return False
+
+
+def ValidRow(grid, row):
+    check_list = []
+    for i in range(len(grid)):
+        if grid[row][i] in check_list:
+            return False
+        else:
+            check_list.append(grid[row][i])
+    return True

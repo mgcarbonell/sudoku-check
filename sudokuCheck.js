@@ -52,10 +52,67 @@ Summary:
 
 // this will always be fixed at the 2d array, so we don't super need to worry
 // nested loops increasing the big 0 to something insane. 
-// We will also use a helper function, like Michael showed us.
-// we can loop through 1 row at a time for (let i = 0; i < grid[0-9]...)
-// we can also do it like the checkerboard problem where you have to try to
-// recreate a checkerboard: let i = 0; i < 9; i++ then j = 0; j < 9; j++...
-function sudoku(grid) {
+// I can use a helper function for validation of each row, and column?
+// couple thoughts: we can use multiple helper functions, dictionaries, and
+// iterate up to 9 each time because we know it's a 9x9 grid.
 
+function sudoku(grid) {
+  // if duplicate == true, return !duplicate
+  let map = {
+    rows: {},
+    cols: {},
+    box: {},
+  };
+
+  for (let i = 0; i < 9; i++) {
+    for (let j = 0; j < 9; j++) {
+      const square = grid[i][j] // our current "square"/"box"/"position"
+      // we'll take care of our rows first.
+      if (!map["rows"][i]) { // does map contain a key for the row?
+        map["rows"][i] = []; // unique values go here
+        map["rows"][i].push(square); // push unique values
+      } else if (!map["rows"][i].includes(square)) { // does it have our 
+        // current square ? No ? Push into our map.
+        map["rows"][i].push(square);
+      } else if (map["rows"][i] && map["rows"][i].includes(square)) {
+        // is our current square in the map.rows? Yes? Invalid sudoku!
+        return false;
+      }
+    }
+  }
+  console.log(map)
 }
+
+// the duplicate checker that Michael used
+// function duplicate(arr) {
+//   return new Set(arr).size !== arr.length
+// }
+
+// console.log(duplicate([1, 2, 3, 4, 5]))
+// console.log(duplicate([1, 1, 2, 3, 4]))
+
+// const grid = [
+//   [1, 3, 2, 5, 4, 6, 9, 8, 7],
+//   [4, 6, 5, 8, 7, 9, 3, 2, 1],
+//   [7, 9, 8, 2, 1, 3, 6, 5, 4],
+//   [9, 2, 1, 4, 3, 5, 8, 7, 6],
+//   [3, 5, 4, 7, 6, 8, 2, 1, 9],
+//   [6, 8, 7, 1, 9, 2, 5, 4, 3],
+//   [5, 7, 6, 9, 8, 1, 4, 3, 2],
+//   [2, 4, 3, 6, 5, 7, 1, 9, 8],
+//   [8, 1, 9, 3, 2, 4, 7, 6, 5]
+// ]
+
+// const grid = [
+//   [1, 3, 2, 5, 4, 6, 9, 2, 7],
+//   [4, 6, 5, 8, 7, 9, 3, 8, 1],
+//   [7, 9, 8, 2, 1, 3, 6, 5, 4],
+//   [9, 2, 1, 4, 3, 5, 8, 7, 6],
+//   [3, 5, 4, 7, 6, 8, 2, 1, 9],
+//   [6, 8, 7, 1, 9, 2, 5, 4, 3],
+//   [5, 7, 6, 9, 8, 1, 4, 3, 2],
+//   [2, 4, 3, 6, 5, 7, 1, 9, 8],
+//   [8, 1, 9, 3, 2, 4, 7, 6, 5]
+// ]
+
+console.log(sudoku(grid))
