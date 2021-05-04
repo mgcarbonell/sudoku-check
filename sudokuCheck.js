@@ -67,7 +67,7 @@ function sudoku(grid) {
   for (let i = 0; i < 9; i++) {
     for (let j = 0; j < 9; j++) {
       const square = grid[i][j] // our current "square"/"box"/"position"
-      // we'll take care of our rows first.
+      // we'll take care of our rows first. use i for horizontal
       if (!map["rows"][i]) { // does map contain a key for the row?
         map["rows"][i] = []; // unique values go here
         map["rows"][i].push(square); // push unique values
@@ -76,6 +76,16 @@ function sudoku(grid) {
         map["rows"][i].push(square);
       } else if (map["rows"][i] && map["rows"][i].includes(square)) {
         // is our current square in the map.rows? Yes? Invalid sudoku!
+        return false;
+      }
+      // now let's do it again but for columns! use j for verticle
+      if (!map["cols"][j]) {
+        map["cols"][j] = [];
+        map["cols"][j].push(square)
+      } else if (!map["cols"][j].includes(square)) { // does not include square
+        map["cols"][j].push(square) // push our current square into the map
+      } else if (map["cols"][j] && map["cols"][j].includes(square)) {
+        // is our current square in map.cols? Yes? Invalid suduoku!
         return false;
       }
     }
@@ -91,17 +101,17 @@ function sudoku(grid) {
 // console.log(duplicate([1, 2, 3, 4, 5]))
 // console.log(duplicate([1, 1, 2, 3, 4]))
 
-// const grid = [
-//   [1, 3, 2, 5, 4, 6, 9, 8, 7],
-//   [4, 6, 5, 8, 7, 9, 3, 2, 1],
-//   [7, 9, 8, 2, 1, 3, 6, 5, 4],
-//   [9, 2, 1, 4, 3, 5, 8, 7, 6],
-//   [3, 5, 4, 7, 6, 8, 2, 1, 9],
-//   [6, 8, 7, 1, 9, 2, 5, 4, 3],
-//   [5, 7, 6, 9, 8, 1, 4, 3, 2],
-//   [2, 4, 3, 6, 5, 7, 1, 9, 8],
-//   [8, 1, 9, 3, 2, 4, 7, 6, 5]
-// ]
+const grid = [
+  [1, 3, 2, 5, 4, 6, 9, 8, 7],
+  [4, 6, 5, 8, 7, 9, 3, 2, 1],
+  [7, 9, 8, 2, 1, 3, 6, 5, 4],
+  [9, 2, 1, 4, 3, 5, 8, 7, 6],
+  [3, 5, 4, 7, 6, 8, 2, 1, 9],
+  [6, 8, 7, 1, 9, 2, 5, 4, 3],
+  [5, 7, 6, 9, 8, 1, 4, 3, 2],
+  [2, 4, 3, 6, 5, 7, 1, 9, 8],
+  [8, 1, 9, 3, 2, 4, 7, 6, 5]
+]
 
 // const grid = [
 //   [1, 3, 2, 5, 4, 6, 9, 2, 7],
