@@ -57,7 +57,7 @@ Summary:
 // iterate up to 9 each time because we know it's a 9x9 grid.
 
 function sudoku(grid) {
-  // if duplicate == true, return !duplicate
+
   let map = {
     rows: {},
     cols: {},
