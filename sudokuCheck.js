@@ -78,7 +78,7 @@ function sudoku(grid) {
         // is our current square in the map.rows? Yes? Invalid sudoku!
         return false;
       }
-      // now let's do it again but for columns! use j for verticle
+      // now let's do it again but for columns! use j for vertical
       if (!map["cols"][j]) {
         map["cols"][j] = [];
         map["cols"][j].push(square)
