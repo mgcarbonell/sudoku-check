@@ -29,15 +29,15 @@ function sudoku(grid) {
 }
 // if we use helper functions
 
-function validRow(grid, row) {
+function validRow() {
 
 }
 
-function validCol(grid, col) {
+function validCol() {
 
 }
 
-function validBox(grid, row, col) {
+function validBox() {
 
 }
 // beginning of a helper function:
